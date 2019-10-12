@@ -1,6 +1,6 @@
 import QtQuick 2.13
 import QtQuick.Controls 2.13
-import QtWebEngine 1.9
+import QtQuick.Layouts 1.13
 
 ApplicationWindow {
     id: window
@@ -10,57 +10,56 @@ ApplicationWindow {
     title: qsTr("Stack")
 
     header: ToolBar {
-        contentHeight: toolButton.implicitHeight
 
-        ToolButton {
-            id: toolButton
-            text: stackView.depth > 1 ? "\u25C0" : "\u2630"
-            font.pixelSize: Qt.application.font.pixelSize * 1.6
-            onClicked: {
-                if (stackView.depth > 1) {
+        RowLayout {
+            ToolButton {
+                text: qsTr("<<")
+                onClicked: {
                     stackView.pop()
-                } else {
-                    drawer.open()
                 }
+
+                visible: stackView.depth > 1
             }
-        }
 
-        Label {
-            text: stackView.currentItem.title
-            anchors.centerIn: parent
-        }
-    }
-
-    Drawer {
-        id: drawer
-        width: window.width * 0.66
-        height: window.height
-
-        Column {
-            anchors.fill: parent
-
-            ItemDelegate {
-                text: qsTr("Page 1")
-                width: parent.width
+            ToolButton {
+                text: qsTr("Settings")
                 onClicked: {
-                    stackView.push("Page1Form.ui.qml")
-                    drawer.close()
+                    stackView.push("About.ui.qml")
                 }
+
+                visible: stackView.depth == 1
+
             }
-            ItemDelegate {
-                text: qsTr("Page 2")
-                width: parent.width
+
+            ToolButton {
+                text: qsTr("About")
                 onClicked: {
-                    stackView.push("Page2Form.ui.qml")
-                    drawer.close()
+                    stackView.push("About.ui.qml")
                 }
+                visible: stackView.depth == 1
+
+            }
+
+            ToolButton {
+                text: qsTr("Exit")
+                onClicked: {
+                    stackView.push("About.ui.qml")
+                }
+
+                visible: stackView.depth == 1
+
+            }
+
+            Label {
+                text: stackView.currentItem.title
             }
         }
+
     }
 
     StackView {
         id: stackView
-        initialItem: "HomeForm.ui.qml"
+        initialItem: "WebView.qml"
         anchors.fill: parent
     }
 }
