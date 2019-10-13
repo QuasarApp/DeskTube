@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+    QCoreApplication::setOrganizationName("QuasarApp");
+    QCoreApplication::setApplicationName("DeskTube");
+
     QGuiApplication app(argc, argv);
 
     QuasarAppUtils::Settings *seting = QuasarAppUtils::Settings::get();
@@ -23,8 +26,9 @@ int main(int argc, char *argv[])
     ctx->setContextProperty("settings", seting);
     engine.load(url);
 
+    int ret = app.exec();
+
     seting->sync();
 
-
-    return app.exec();
+    return ret;
 }

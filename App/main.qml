@@ -17,9 +17,9 @@ ApplicationWindow {
         onValueChanged: {
 
             const _key = key;
-            const _val = value;
+            const _val = Boolean(value);
 
-            if (_key === fullscrean) {
+            if (_key === "fullscrean") {
                 if (_val) {
                     window.showFullScreen();
                 } else {
@@ -31,7 +31,9 @@ ApplicationWindow {
     }
 
     Component.onCompleted:  {
-        const val = settings.getValue("fullscrean", false)
+        const val2 = settings.getValue("fullscrean", false)
+
+        const val = Boolean(val2) || val2 !== "false"
         if (val) {
             window.showFullScreen();
         } else {
