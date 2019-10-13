@@ -10,4 +10,7 @@
         <file alias="redLogo">Logo/logoRed.png</file>
         <file alias="blueLogo">Logo/logoBlue.png</file>
     </qresource>
+    <qresource prefix="/lang">
+        <file alias="ru">languages/ru.qm</file>
+    </qresource>
 </RCC>

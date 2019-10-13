@@ -23,7 +23,9 @@ Page {
         CheckBox {
             Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
 
-            checked: Boolean(settings.getValue("fullscrean", false))
+            property string settingsVal: settings.getValue("fullscrean", false)
+
+            checked: Boolean(settingsVal) && settingsVal !== "false"
 
             onCheckedChanged: {
                 settings.setValue("fullscrean", checked);

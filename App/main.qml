@@ -9,8 +9,6 @@ ApplicationWindow {
     height: 480
     title: qsTr("Stack")
 
-    visibility: Qt.WindowFullScreen // << the solution
-
     Connections {
         target: settings
 
@@ -31,10 +29,9 @@ ApplicationWindow {
     }
 
     Component.onCompleted:  {
-        const val2 = settings.getValue("fullscrean", false)
+        const val = settings.getValue("fullscrean", false)
 
-        const val = Boolean(val2) || val2 !== "false"
-        if (val) {
+        if (Boolean(val) && val !== "false") {
             window.showFullScreen();
         } else {
             window.showNormal();
@@ -45,7 +42,7 @@ ApplicationWindow {
 
         RowLayout {
             ToolButton {
-                text: qsTr("<<")
+                text: qsTr("\u25C0")
                 onClicked: {
                     stackView.pop()
                 }
@@ -59,7 +56,7 @@ ApplicationWindow {
                     stackView.push("Settings.qml")
                 }
 
-                visible: stackView.depth == 1
+                visible: stackView.depth === 1
 
             }
 
@@ -68,7 +65,7 @@ ApplicationWindow {
                 onClicked: {
                     stackView.push("About.ui.qml")
                 }
-                visible: stackView.depth == 1
+                visible: stackView.depth === 1
 
             }
 
@@ -78,7 +75,7 @@ ApplicationWindow {
                     Qt.quit();
                 }
 
-                visible: stackView.depth == 1
+                visible: stackView.depth === 1
 
             }
 

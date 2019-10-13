@@ -25,6 +25,17 @@ SOURCES += \
 
 RESOURCES += qml.qrc
 
+QT_DIR = $$[QT_HOST_BINS]
+LUPDATE = $$QT_DIR/lupdate
+LRELEASE = $$QT_DIR/lrelease
+
+TRANSLATIONS += \
+    languages/ru.ts
+
+DISTFILES += \
+    languages/ru.ts
+
+
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
