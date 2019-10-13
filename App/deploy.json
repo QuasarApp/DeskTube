@@ -1,0 +1,6 @@
+{
+    "bin": "DeskTube",
+    "libDir": "./../",
+    "qmake": "./../../../Qt/5.13.1/gcc_64/bin/qmake",
+    "qmlDir": "./"
+}

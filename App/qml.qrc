@@ -6,4 +6,8 @@
         <file>qtquickcontrols2.conf</file>
         <file>Settings.qml</file>
     </qresource>
+    <qresource prefix="/img">
+        <file alias="redLogo">Logo/logoRed.png</file>
+        <file alias="blueLogo">Logo/logoBlue.png</file>
+    </qresource>
 </RCC>

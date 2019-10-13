@@ -9,6 +9,36 @@ ApplicationWindow {
     height: 480
     title: qsTr("Stack")
 
+    visibility: Qt.WindowFullScreen // << the solution
+
+    Connections {
+        target: settings
+
+        onValueChanged: {
+
+            const _key = key;
+            const _val = value;
+
+            if (_key === fullscrean) {
+                if (_val) {
+                    window.showFullScreen();
+                } else {
+                    window.showNormal();
+                }
+            }
+
+        }
+    }
+
+    Component.onCompleted:  {
+        const val = settings.getValue("fullscrean", false)
+        if (val) {
+            window.showFullScreen();
+        } else {
+            window.showNormal();
+        }
+    }
+
     header: ToolBar {
 
         RowLayout {
@@ -24,7 +54,7 @@ ApplicationWindow {
             ToolButton {
                 text: qsTr("Settings")
                 onClicked: {
-                    stackView.push("About.ui.qml")
+                    stackView.push("Settings.qml")
                 }
 
                 visible: stackView.depth == 1
@@ -43,7 +73,7 @@ ApplicationWindow {
             ToolButton {
                 text: qsTr("Exit")
                 onClicked: {
-                    stackView.push("About.ui.qml")
+                    Qt.quit();
                 }
 
                 visible: stackView.depth == 1
