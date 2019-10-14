@@ -9,6 +9,8 @@
     <qresource prefix="/img">
         <file alias="redLogo">Logo/logoRed.png</file>
         <file alias="blueLogo">Logo/logoBlue.png</file>
+        <file alias="ico">Logo/logo.ico</file>
+
     </qresource>
     <qresource prefix="/lang">
         <file alias="ru">languages/ru.qm</file>

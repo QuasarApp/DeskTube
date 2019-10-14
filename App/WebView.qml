@@ -8,9 +8,11 @@ Item {
     property string title: view.title
 
     WebEngineView {
+
         id: view
         url: "https://www.youtube.com"
         anchors.fill: parent
+        settings.fullScreenSupportEnabled: true
     }
 
     ProgressBar {

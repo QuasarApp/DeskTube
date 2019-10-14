@@ -1,4 +1,4 @@
-QT += quick
+QT += quick webengine webenginewidgets
 
 CONFIG += c++17
 
@@ -34,6 +34,8 @@ TRANSLATIONS += \
 
 DISTFILES += \
     languages/ru.ts
+
+RC_ICONS=$$PWD/Logo/logo.ico
 
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
